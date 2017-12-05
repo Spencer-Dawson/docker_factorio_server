@@ -39,10 +39,4 @@ ENV VERSION=0.15.37 \
 
 CMD ["./new_smart_launch.sh"]
 
-RUN apk --update add bash curl xz && \
-    curl -L https://www.factorio.com/get-download/$VERSION/headless/linux64 -o /tmp/factorio_headless_x64.tar.xz && \
-    echo "$FACTORIO_SHA1  /tmp/factorio_headless_x64.tar.xz" | sha1sum -c && \
-    xz --decompress /tmp/factorio_headless_x64.tar.xz && \
-    tar xvf /tmp/factorio_headless_x64.tar && \
-    rm -rf /tmp/factorio_headless_x64.tar && \
-    apk del curl
+RUN apk --update add bash curl xz
