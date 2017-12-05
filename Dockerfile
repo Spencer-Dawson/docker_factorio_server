@@ -1,6 +1,6 @@
 FROM frolvlad/alpine-glibc:alpine-3.3_glibc-2.23
 
-MAINTAINER zopanix <zopanix@gmail.com>
+MAINTAINER spec4d <spec4d@gmail.com>
 
 WORKDIR /opt
 
