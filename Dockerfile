@@ -36,6 +36,7 @@ ENV VERSION=0.15.37 \
     FACTORIO_SAVE= \
     FACTORIO_VISIBILITY_LAN=true \
     FACTORIO_VISIBILITY_PUBLIC=true
+    FACTORIO_ADMINS = \
 
 CMD ["./new_smart_launch.sh"]
 

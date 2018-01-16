@@ -75,7 +75,7 @@ cat > /opt/factorio/server-settings.json << EOF
   "autosave_only_on_server": $FACTORIO_AUTOSAVE_ONLY_ON_SERVER,
 
   "_comment_admins": "List of case insensitive usernames, that will be promoted immediately",
-  "admins": []
+  "admins": [$FACTORIO_ADMINS]
 }
 EOF
 
