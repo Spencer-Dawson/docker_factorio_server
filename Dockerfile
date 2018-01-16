@@ -6,7 +6,7 @@ WORKDIR /opt
 
 COPY ./new_smart_launch.sh /opt/
 
-VOLUME /opt/factorio/saves /opt/factorio/mods
+VOLUME /opt/factorio/saves /opt/factorio/mods /opt/factorio/scenarios /opt/factorio/config
 
 EXPOSE 34197/udp
 EXPOSE 27015/tcp
