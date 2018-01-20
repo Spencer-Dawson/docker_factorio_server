@@ -75,7 +75,7 @@ cat > /opt/factorio/server-settings.json << EOF
   "autosave_only_on_server": $FACTORIO_AUTOSAVE_ONLY_ON_SERVER,
 
   "_comment_admins": "List of case insensitive usernames, that will be promoted immediately",
-  "admins": [$FACTORIO_ADMINS]
+    "admins": [$FACTORIO_ADMINS]
 }
 EOF
 
@@ -115,25 +115,22 @@ then
 #  echo "# Factorio User Token = '$FACTORIO_USER_TOKEN'"
   echo "###"
 fi
-# TODO Adding this because of bug, will need to be removed once bug in factorio is fixed
 cd /opt/factorio/saves
 # Handling save settings
 save_dir="/opt/factorio/saves"
 if [ -z $FACTORIO_SAVE ]
 then
-  if [ "$(ls -A $save_dir)" ]
+  # if save file(s) exist
+  if [[ $(ls) ]]
   then
-    echo "###"
-    echo "# Taking latest save"
-    echo "###"
+    #load latest save
+    factorio_command="$factorio_command --start-server-load-latest"
   else
-    echo "###"
-    echo "# Creating a new map [save.zip]"
-    echo "###"
-    /opt/factorio/bin/x64/factorio --create save.zip
+    #load new game using launch command
+    factorio_command="$factorio_command $FACTORIO_START_SERVER_COMMAND"
   fi
-  factorio_command="$factorio_command --start-server-load-latest"
 else
+  # explicit save file given so loading that save
   factorio_command="$factorio_command --start-server $FACTORIO_SAVE"
 fi
 echo "###"
@@ -141,4 +138,5 @@ echo "# Launching Game"
 echo "###"
 # Closing stdin
 exec 0<&-
+# factorio_command="$factorio_command $FACTORIO_START_SERVER_COMMAND"
 exec $factorio_command
